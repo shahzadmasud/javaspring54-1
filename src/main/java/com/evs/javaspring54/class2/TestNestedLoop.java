@@ -49,7 +49,7 @@ public class TestNestedLoop {
                 three:
                 for (int k = j; k < 10; k++) {
                     if (i+j == j+k) {
-                        continue;
+                        continue ;
                     }
                     println(i + ":" + j + ":" + k);
                 }

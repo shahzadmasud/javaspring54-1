@@ -18,5 +18,32 @@ public class SystemPrintUtils {
     public static void println(Object object) {
         System.out.println(object);
     }
+    
+    public static void printArray(float[] arr ) {
+        for (float va : arr) {
+            print(va + ", ");
+        }
+        println(" ");
+    }
+    
+    public static void printArray(float[][] arr ) {
+        for (float[] ff2 : arr) {
+            for (float fff2 : ff2) {
+                print(fff2 + " ");
+            }
+            println(" ");
+        }
+        println(" ");
+    }
+    
+    public static void printArray(int[][] arr ) {
+        for (int[] ff2 : arr) {
+            for (int fff2 : ff2) {
+                print(fff2 + " ");
+            }
+            println(" ");
+        }
+        println(" ");
+    }
 
 }
