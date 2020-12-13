@@ -43,7 +43,7 @@ public class TestString {
         sp = str.split("[ ,a]");
         sp = str.split(n3);
 
-        // Search (indexOf)
+        // Search (indexOf), Contains
 //        int idx = str.indexOf(n3); // offset (0 based), -1 (not found)
         int idx = 0, count = 0;
         do {
