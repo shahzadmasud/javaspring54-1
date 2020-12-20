@@ -13,15 +13,21 @@ import static com.evs.javaspring54.class2.SystemPrintUtils.*;
  */
 public class Point {
 
-    static long COUNT = 0;
+    static long COUNT;
+    
+    static {
+        int a ;
+        // Static 
+        COUNT = 0 ;
+    }
 
     // attribute, argument, belonging, variables
-    double x;
-    double y;
+    private double x;
+    private double y;
 
     // No-Argument Constructor
     // Default Constructor 
-    Point() {
+    public Point() {
         // setX(0.0); //x = 0.0 ;
         // setY(0.0); // y = 0.0 ; 
         this(0.0, 0.0);
@@ -29,7 +35,7 @@ public class Point {
 
     // Argument Constructor
     // Nucleus Constructor 
-    Point(double newX, double newY) {
+    public Point(double newX, double newY) {
         setX(newX); // x = newX ;
         setY(newY); // y = newY ;
         COUNT++;
@@ -37,7 +43,7 @@ public class Point {
 
     // Copy Constructor
     // Clone Constructor
-    Point(Point p1) {
+    public Point(Point p1) {
         // setX(p1.x); //p2.x = p1.x;
         // setY(p1.y); //p2.y = p1.y;
         this(p1.x, p1.y);
@@ -52,7 +58,7 @@ public class Point {
      *
      * @param newX
      */
-    void setX(double newX) {
+    public void setX(double newX) {
         x = newX;
     }
 
@@ -61,28 +67,28 @@ public class Point {
      *
      * @return - x
      */
-    double getX() {
+    public double getX() {
         return x;
     }
 
-    void setY(double newY) {
+    public void setY(double newY) {
         y = newY;
     }
 
-    double getY() {
+    public double getY() {
         return y;
     }
 
-    double distance(Point p) {
+    public double distance(Point p) {
         return distance(p.x, p.y);
     }
 
-    double distance(double x, double y) {
+    private double distance(double x, double y) {
         return Math.sqrt((y - this.y) * (y - this.y)
                 + (x - this.x) * (x - this.x));
     }
 
-    void move(double p) {
+    public void move(double p) {
         move(p, p);
     }
 
@@ -92,7 +98,7 @@ public class Point {
      * @param x
      * @param y
      */
-    void move(double x, double y) {
+    public void move(double x, double y) {
         this.x += x;
         this.y += y;
     }
@@ -111,7 +117,7 @@ public class Point {
 //        p2.y = p1.y ;   
         Point p2 = new Point(p1);
         Point p3 = new Point(11.0, 21.0);
-
+        print(Point.COUNT) ;
         println(p1);
         println(p2);
         println(p3);

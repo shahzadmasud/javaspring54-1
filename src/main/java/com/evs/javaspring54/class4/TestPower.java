@@ -29,13 +29,20 @@ public class TestPower {
     }
 
     static double power(double x, long y) {
-        if (y > 1) {
-            return x * power(x, y - 1);
-        } else if (y < 0) {
-            return 1 / power(x, -y);
-        } else {
-            return y == 0 ? 1 : x;
-        }
+        return y > 0 
+                ? x * power (x, y -1)
+                : y < 0 
+                    ? 1 / power ( x , -y ) 
+                    : y == 0 
+                        ?   1
+                        : x ;
+//        if (y > 1) {
+//            return x * power(x, y - 1);
+//        } else if (y < 0) {
+//            return 1 / power(x, -y);
+//        } else {
+//            return y == 0 ? 1 : x;
+//        }
         
         // Shift it to Ternary operator
         
