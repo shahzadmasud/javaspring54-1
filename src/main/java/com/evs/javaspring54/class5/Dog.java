@@ -43,92 +43,92 @@ public class Dog extends Animal {
         return "Dog{" + "breed=" + breed + '}' + super.toString();
     }
 
-    public static void main(String[] args) {
-
-        // a. Multiple Inheritance [2 parent class) = 
-        // [Recommended] b. Multiple Level Inheritance (Grand Parent)
-        // c. Partial Inheritance (Members or Functions)
-        Dog a = new Dog("American");
-        Cat b = new Cat("Persian");
-        Duck c = new Duck("Arabic");
-
-        Animal d = new Dog("American");
-        Animal e = new Cat("Persian");
-        Animal f = new Duck("Arabic");
-
-        BullDog g = new BullDog();
-        Dog h = new BullDog();
-        Animal i = new BullDog();
-
-        // Anonymous Classes
-        Animal j = new Animal("Dinasour") {
-            @Override
-            public String sound() {
-                return "Growwwl";
-            }
-
-            @Override
-            public boolean canFly() {
-                return true;
-            }
-        };
-
-        Fly k = new Fly() {
-            @Override
-            public boolean canFly() {
-                return false;
-            }
-
-            @Override
-            public String toString() {
-                return "Fly Anonymous class " + canFly();
-            }
-
-        };
-
-//        println(a, b, c);
-//        println(d, e, f);
-        Animal[] ar = {a, b, c, d, e, f, g, h, i, j};
-        for (Animal aa : ar) {
-            println(aa.sound());
-        }
-
-        Fly[] fr = {a, b, c, d, e, f, g, h, i, j, k};
-        for (Fly aa : fr) {
-            println(aa);
-        }
-//        
-//        Fly dog = new Dog() ;
-//        dog.canFly();
-
-        // 1. Composition
-        // 2. Inheritance (Concrete Class, Interface)
-        // 3. Polymorphism (Weak, Strong, Runtime, Compiletime)
-        // 4. Abstraction (Anonymous Class)
-        // 5.2 
-        // Build an Order Placement System
-        // Order = Parent
-        // Breverage Order
-        // Food Order
-        // Replacement Order
-        // VegFood Order 
-        // Non-Veg Food Order
-        // Output: Code, UML (Diagram)
-        Order o ; 
-        int mainMenu = input("1. Veg", "2.Non-Veg");
-        switch ( mainMenu ) {
-            case 1: 
-                int sMenu = input("1. Soup", "2. Dine-in") ;
-                println(sMenu) ;
-                o = new VegSoup() ;
-                break; 
-            case 2: 
-                int tMenu = input("1. Salad", "2. Drink") ;
-                println(tMenu) ;
-                break; 
-        }
-
-    }
+//    public static void main(String[] args) {
+//
+//        // a. Multiple Inheritance [2 parent class) = 
+//        // [Recommended] b. Multiple Level Inheritance (Grand Parent)
+//        // c. Partial Inheritance (Members or Functions)
+//        Dog a = new Dog("American");
+//        Cat b = new Cat("Persian");
+//        Duck c = new Duck("Arabic");
+//
+//        Animal d = new Dog("American");
+//        Animal e = new Cat("Persian");
+//        Animal f = new Duck("Arabic");
+//
+//        BullDog g = new BullDog();
+//        Dog h = new BullDog();
+//        Animal i = new BullDog();
+//
+//        // Anonymous Classes
+//        Animal j = new Animal("Dinasour") {
+//            @Override
+//            public String sound() {
+//                return "Growwwl";
+//            }
+//
+//            @Override
+//            public boolean canFly() {
+//                return true;
+//            }
+//        };
+//
+//        Fly k = new Fly() {
+//            @Override
+//            public boolean canFly() {
+//                return false;
+//            }
+//
+//            @Override
+//            public String toString() {
+//                return "Fly Anonymous class " + canFly();
+//            }
+//
+//        };
+//
+////        println(a, b, c);
+////        println(d, e, f);
+//        Animal[] ar = {a, b, c, d, e, f, g, h, i, j};
+//        for (Animal aa : ar) {
+//            println(aa.sound());
+//        }
+//
+//        Fly[] fr = {a, b, c, d, e, f, g, h, i, j, k};
+//        for (Fly aa : fr) {
+//            println(aa);
+//        }
+////        
+////        Fly dog = new Dog() ;
+////        dog.canFly();
+//
+//        // 1. Composition
+//        // 2. Inheritance (Concrete Class, Interface)
+//        // 3. Polymorphism (Weak, Strong, Runtime, Compiletime)
+//        // 4. Abstraction (Anonymous Class)
+//        // 5.2 
+//        // Build an Order Placement System
+//        // Order = Parent
+//        // Breverage Order
+//        // Food Order
+//        // Replacement Order
+//        // VegFood Order 
+//        // Non-Veg Food Order
+//        // Output: Code, UML (Diagram)
+//        Order o ; 
+//        int mainMenu = input("1. Veg", "2.Non-Veg");
+//        switch ( mainMenu ) {
+//            case 1: 
+//                int sMenu = input("1. Soup", "2. Dine-in") ;
+//                println(sMenu) ;
+//                o = new VegSoup() ;
+//                break; 
+//            case 2: 
+//                int tMenu = input("1. Salad", "2. Drink") ;
+//                println(tMenu) ;
+//                break; 
+//        }
+//
+//    }
     
     public static class Order {
         

@@ -5,6 +5,8 @@
  */
 package com.evs.javaspring54.class5;
 
+import com.evs.javaspring54.class6.Fly;
+
 /**
  *
  * @author ok
@@ -12,6 +14,14 @@ package com.evs.javaspring54.class5;
 public abstract class Animal implements Fly {
 
     private String type;
+    
+    public interface TestFly {
+        
+    }
+    
+    public class TestInner implements TestFly {
+        
+    }
 
 //    public Animal() {
 //

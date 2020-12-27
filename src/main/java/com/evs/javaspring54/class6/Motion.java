@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.evs.javaspring54.class5;
+package com.evs.javaspring54.class6;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 
 /**
  *
  * @author ok
  */
-public interface Fly {
-
-    public boolean canFly() ;
+public interface Motion {
+    
+    public InputStream keyboard = new BufferedInputStream(System.in) ;
     
 }
