@@ -21,7 +21,7 @@ public class TestFile {
 
     public static void main(String[] args) {
 
-//        File file = new File("c:/abc.txt");
+//        File file = new File("../../abc.txt");
 //        // List all File of Drives (Without Filter)
 //        File[] drive = File.listRoots();
 //        for (File d : drive) {

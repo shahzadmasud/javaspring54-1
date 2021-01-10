@@ -5,6 +5,7 @@
  */
 package com.evs.javaspring54.class2;
 
+import java.sql.Timestamp;
 import java.util.Scanner;
 
 /**
@@ -76,6 +77,10 @@ public class SystemPrintUtils {
         print(">>") ;
         Scanner scan = new Scanner(System.in) ;
         return scan.nextInt( );
+    }
+    
+    public static Timestamp now() {
+        return new Timestamp(System.currentTimeMillis()) ;
     }
 
 }
