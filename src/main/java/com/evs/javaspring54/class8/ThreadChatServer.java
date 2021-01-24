@@ -37,36 +37,40 @@ public class ThreadChatServer {
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        // c. Create Input/output variables
-                        InputStream clientIn
-                                = new BufferedInputStream(client.getInputStream());
-                        OutputStream clientOut
-                                = new BufferedOutputStream(client.getOutputStream());
+                        try {
+                            // c. Create Input/output variables
+                            InputStream clientIn
+                                    = new BufferedInputStream(client.getInputStream());
+                            OutputStream clientOut
+                                    = new BufferedOutputStream(client.getOutputStream());
 
-                        // d. Read Write 
-                        byte[] b = new byte[1024];
-                        while (true) {
-                            try {
-                                // d.1 Read 
-                                int readBytes = clientIn.read(b);
-                                println("--(Client:" + client.getPort() + ")--"
-                                        + "[" + now() + "] => "
-                                        + new String(b, 0, readBytes)
-                                );
+                            // d. Read Write 
+                            byte[] b = new byte[1024];
+                            while (true) {
+                                try {
+                                    // d.1 Read 
+                                    int readBytes = clientIn.read(b);
+                                    println("--(Client:" + client.getPort() + ")--"
+                                            + "[" + now() + "] => "
+                                            + new String(b, 0, readBytes)
+                                    );
 
-                                // d.2 Write
-                                clientOut.write(b, 0, readBytes);
-                                clientOut.flush();
-                            } catch (IOException ex) {
-                                Logger.getLogger(ThreadChatServer.class.getName()).log(Level.SEVERE, null, ex);
+                                    // d.2 Write
+                                    clientOut.write(b, 0, readBytes);
+                                    clientOut.flush();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(ThreadChatServer.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
                             }
-
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                 });
                 t.setName(client.toString());
                 t.start();
-                
+
                 // brodcast message to all connected oones
                 // send 1-1 message
                 // how to encrypt and decrypt
