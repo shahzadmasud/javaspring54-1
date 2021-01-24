@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+" xmlns:aop="http://www.springframework.org/schema/aop">
+    <context:annotation-config />
+
+    <!-- Day 1 -->
+    <!-- FirstBean firstbean = new FirstBean() -->
+    <bean id="firstbean" class="com.evs.javaspring54.model.FirstBean" />
+    
+    <!--
+        FirstBean firstbeanWithIdName = new FirstBean() ;
+        firstbeanWithIdName.setId(11) ;
+        firstbeanWithIdName.setName("first") ;
+    -->
+    <bean id="firstbeanWithIdName" class="com.evs.javaspring54.model.FirstBean">
+        <property name="id" value="11" />
+        <property name="name" value="first" />
+    </bean>
+    
+    <!--
+        FirstBean firstbeanWithConstructor =
+            new FirstBean (111, "Constructor");
+    -->
+    <bean id="firstbeanWithConstructor" class="com.evs.javaspring54.model.FirstBean">
+        <constructor-arg
+            index="0"
+            type="java.lang.Integer"
+            value="111"
+            />
+        <constructor-arg
+            index="1"
+            type="java.lang.String"
+            value="Constructor"
+            />
+    </bean>
+    
+    <!--
+        java.io.File outputFolder = 
+                        new File ("e:/outputfolder") ;
+    -->
+    <bean   
+        id="outputFolder"
+        class="java.io.File" >
+        <constructor-arg 
+            index="0"
+            type="java.lang.String"
+            value="e:/outputfolder"
+        />
+    </bean>
+    
+    <bean id="child" class="com.evs.javaspring54.model.SecondBean" >
+        <property name="id" value="222" />
+        <property name="name" value="child" />
+    </bean>
+    
+    <bean id="secondBean" class="com.evs.javaspring54.model.SecondBean" >
+        <property name="id" value="22" />
+        <property name="name" value="second" />
+    </bean>
+    
+    <bean id="firstbeanWithChild" class="com.evs.javaspring54.model.FirstBean">
+        <property name="id" value="12" />
+        <property name="name" value="firstWithChild" />
+<!--        <property name="child" ref="secondBean" />-->
+    </bean>
+    
+    <bean id="firstbeanWithChildFolder" class="com.evs.javaspring54.model.FirstBean">
+        <property name="id" value="13" />
+        <property name="name" value="firstWithChildFolder" />
+<!--        <property name="child" ref="secondBean" />-->
+<!--        <property name="outputFolder" ref="outputFolder" />-->
+    </bean>
+    
+    
+</beans>
