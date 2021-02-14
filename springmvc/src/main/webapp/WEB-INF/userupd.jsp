@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Jan 31, 2021, 10:44:10 AM
+    Document   : useradd
+    Created on : Feb 14, 2021, 11:33:42 AM
     Author     : ok
 --%>
 
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Spring :: MVC :: Index</title>
+        <title>Spring :: MVC :: User Update </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     </head>
     <body>
@@ -24,27 +24,28 @@
                 ${map.fail}
             </div>
         </c:if>
-        <form action="login.htm" method="POST">
+        <form action="userupd.htm" method="POST">
+            <input type="hidden" name="id"
+                   value="${map.user.id}" />
             <table border="1" class="table table-dark">
                 <tr>
-                    <td align="right">Login:</td>
-                    <td><input type="text" name="username" /></td>
+                    <td align="right">User Name</td>
+                    <td><input type="text" name="username" value="${map.user.username}" /></td>
                 </tr>
                 <tr>
-                    <td align="right">Password:</td>
-                    <td><input type="password" name="userpass" /></td>
+                    <td align="right">User Pass:</td>
+                    <td><input type="password" name="userpass" value="${map.user.userpass}" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Login" class="btn btn-primary" />
-                        <input type="reset" value="Cancel" class="btn btn-danger" />
+                        <input type="submit" value="Update User" class="btn btn-success" />
+                        <input type="reset" value="Cancel" class="btn btn-secondary" />
                     </td>
                 </tr>
             </table>
-            <!--            Login: <input type="text" name="username" /> <br />
-                        Password: <input type="password" name="userpass" /> <br />
-                        <input type="submit" value="Login" /> 
-                        <input type="reset" value="Cancel" />-->
         </form>
+        <!-- Footer -->
+        <a href="useradd.htm"><input type="button" value="Register" /></a>
+        <a href="home.htm"><input type="button" value="Home" /></a>
     </body>
 </html>

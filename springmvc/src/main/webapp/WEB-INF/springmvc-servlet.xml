@@ -18,4 +18,19 @@
             <value>.jsp</value>
         </property>
     </bean>
+    
+    <bean 
+        id="datasource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/javaspring54?autoReconnect=true&amp;useSSL=false" />
+        <property name="username" value="root" />
+        <property name="password" value="intello" />
+    </bean>
+    
+    <bean 
+        id="userTemplate"
+        class="com.evs.javaspring54.template.UserJdbcTemplate" >
+        <property name="dataSource" ref="datasource" />
+    </bean>
 </beans>
