@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -45,9 +46,9 @@ public class UserModel {
     @Column(name = "active")
     private Integer active = 1;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn("role_id")
-    private RoleModel role;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    //@JoinColumn("role_id")
+//    private RoleModel role;
 
     public UserModel() {
     }
