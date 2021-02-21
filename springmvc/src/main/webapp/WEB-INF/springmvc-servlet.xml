@@ -33,4 +33,28 @@
         class="com.evs.javaspring54.template.UserJdbcTemplate" >
         <property name="dataSource" ref="datasource" />
     </bean>
+    
+    <!-- Hibernate Property -->
+    <bean   id="sessionFactory"
+            class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" >
+            
+        <property name="dataSource" ref="datasource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>com.evs.javaspring54.model.UserModel</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dilect">org.hibernate.dialect.MySQLDilect</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="userHibernate"
+        class="com.evs.javaspring54.hibernate.UserHibernateDao" />
+    
+    
 </beans>

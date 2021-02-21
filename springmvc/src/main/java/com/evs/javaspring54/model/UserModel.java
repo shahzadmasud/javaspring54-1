@@ -5,46 +5,51 @@
  */
 package com.evs.javaspring54.model;
 
-import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
-import org.springframework.jdbc.core.RowMapper;
+import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author ok
  */
-public class User implements Serializable, RowMapper<User> {
+@Entity
+@Table(name = "user")
+public class UserModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "username", nullable = false)
     private String username;
+
+    @Column(name = "userpass")
     private String userpass;
+
+    @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    @Column(name = "active")
     private Integer active = 1;
 
-    public User() {
-    }
+    @OneToOne(fetch = FetchType.LAZY)
+    //@JoinColumn("role_id")
+    private RoleModel role;
 
-    public User(Integer id, String username, String userpass) {
-        this.id = id;
-        this.username = username;
-        this.userpass = userpass;
-    }
-
-    public User(String username, String userpass) {
-        this.username = username;
-        this.userpass = userpass;
-    }
-
-    public User(Integer id, String username, String userpass, Timestamp createdAt, Timestamp updatedAt, Integer active) {
-        this.id = id;
-        this.username = username;
-        this.userpass = userpass;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.active = active;
+    public UserModel() {
     }
 
     public Integer getId() {
@@ -95,27 +100,26 @@ public class User implements Serializable, RowMapper<User> {
         this.active = active;
     }
 
-    @Override
-    public User mapRow(ResultSet rs, int i) throws SQLException {
-        User u = new User();
-        u.setId(rs.getInt("id"));
-        u.setUsername(rs.getString("username"));
-        u.setUserpass(rs.getString("userpass"));
-        u.setCreatedAt(rs.getTimestamp("created_at"));
-        u.setUpdatedAt(rs.getTimestamp("updated_at"));
-        u.setActive(rs.getInt("active"));
-        return u;
+    public Integer getRoleId() {
+        return role != null ? role.getId() : -1;
     }
-    
-    public UserModel clone() {
-        UserModel um = new UserModel();
+
+    public RoleModel getRole() {
+        return role;
+    }
+
+    public void setRole(RoleModel role) {
+        this.role = role;
+    }
+
+    public User clone() {
+        User um = new User();
         um.setId(getId());
         um.setUsername(getUsername());
         um.setUserpass(getUserpass());
         um.setCreatedAt(getCreatedAt());
         um.setUpdatedAt(getUpdatedAt());
         um.setActive(getActive());
-        return um ;
+        return um;
     }
-
 }

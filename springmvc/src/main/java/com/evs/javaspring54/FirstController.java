@@ -24,8 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FirstController {
 
+//    @Autowired
+//    private UserDao userTemplate;
+    
     @Autowired
-    private UserDao userTemplate;
+    private UserDao userHibernate ;
 
     @RequestMapping("/index.htm")
     public ModelAndView index(
@@ -53,7 +56,8 @@ public class FirstController {
             @RequestParam(name = "userpass") String userpass,
             HttpServletRequest request
     ) {
-        User user = userTemplate.validate(username, userpass);
+//        User user = userTemplate.validate(username, userpass);
+        User user = userHibernate.validate(username, userpass);
 //        if ("admin".equals(username)
 //                && "admin".equals(userpass)) {
         if (user != null) {
@@ -74,7 +78,8 @@ public class FirstController {
                 = new HashMap<>();
 
         // All Users
-        map.put("all", userTemplate.all());
+//        map.put("all", userTemplate.all());
+        map.put("all", userHibernate.all());
 
         // Pass 
         if (pass != null && pass.trim().length() > 0) {
@@ -103,7 +108,8 @@ public class FirstController {
     ) {
         User user = new User(username, userpass);
         String pass = null, fail = null;
-        boolean insert = userTemplate.create(user);
+//        boolean insert = userTemplate.create(user);
+        boolean insert = userHibernate.create(user);
         if (insert) {
             pass = "User registered successfully !!! ";
         } else {
@@ -116,7 +122,8 @@ public class FirstController {
     public ModelAndView userUpdGet(
             @RequestParam(name = "id") String id
     ) {
-        User user = userTemplate.get(Integer.parseInt(id));
+//        User user = userTemplate.get(Integer.parseInt(id));
+        User user = userHibernate.get(Integer.parseInt(id));
         Map<String, Object> map
                 = new HashMap<>();
         if (user != null) {
@@ -135,7 +142,8 @@ public class FirstController {
             @RequestParam(name = "userpass", required = true) String userpass
     ) {
         User user = new User(Integer.parseInt(id), username, userpass);
-        boolean update = userTemplate.update(user);
+//        boolean update = userTemplate.update(user);
+        boolean update = userHibernate.update(user);
         return home(
                 update ? "User updated successfully !!! " : null,
                 update ? null : "Unable to update user ..."
@@ -146,7 +154,8 @@ public class FirstController {
     public ModelAndView userDelPost(
             @RequestParam(name = "id", required = true) String id
     ) {
-        boolean update = userTemplate.delete(Integer.parseInt(id));
+//        boolean update = userTemplate.delete(Integer.parseInt(id));
+        boolean update = userHibernate.delete(Integer.parseInt(id));
         return home(
                 update ? "User deleted successfully !!! " : null,
                 update ? null : "Unable to deleted user ..."
@@ -157,6 +166,7 @@ public class FirstController {
     public ModelAndView logout( HttpServletRequest request) {
         request.getSession().removeAttribute("user");
         return index("User Logged Out successfully !!! ", null);
+        
     }
 
 }
