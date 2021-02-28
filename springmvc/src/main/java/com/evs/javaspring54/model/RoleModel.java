@@ -34,8 +34,8 @@ public class RoleModel {
     @Column(name = "active")
     private String active;
 
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = UserModel.class, orphanRemoval = false)
-    private Collection<UserModel> users;
+//    @OneToMany(fetch = FetchType.LAZY, targetEntity = UserModel.class, orphanRemoval = false)
+//    private Collection<UserModel> users;
 
     public RoleModel() {
     }

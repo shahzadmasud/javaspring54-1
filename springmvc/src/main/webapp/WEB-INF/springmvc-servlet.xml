@@ -42,6 +42,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.evs.javaspring54.model.UserModel</value>
+                <value>com.evs.javaspring54.model.RoleModel</value>
             </list>
         </property>
         <property name="hibernateProperties">

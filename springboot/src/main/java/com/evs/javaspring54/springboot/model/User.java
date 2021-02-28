@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.evs.javaspring54.model;
+package com.evs.javaspring54.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.sql.Timestamp;
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,50 +16,43 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 /**
  *
  * @author ok
  */
 @Entity
-@Table(name = "user")
-public class UserModel {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-    @Column(name = "username", nullable = false)
     private String username;
-
-    @Column(name = "userpass")
     private String userpass;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
-
-    @Column(name = "active")
-    private Integer active = 1;
-    
-    @ManyToOne (fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
-    private RoleModel role;
+    private Role role;
 
-    public UserModel() {
+    public String getRoleName() {
+        return role != null ? role.getName() : "";
     }
 
-    public Integer getId() {
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -78,6 +72,13 @@ public class UserModel {
         this.userpass = userpass;
     }
 
+    @Column(name = "created_at")
+    private Timestamp createdAt;
+    @Column(name = "updated_at")
+    private Timestamp updatedAt;
+    @Column(name = "active")
+    private Boolean active = true ;
+
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -94,34 +95,12 @@ public class UserModel {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(Integer active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-//    public Integer getRoleId() {
-//        return role != null ? role.getId() : -1;
-//    }
-//
-//    public RoleModel getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(RoleModel role) {
-//        this.role = role;
-//    }
-
-    public User clone() {
-        User um = new User();
-        um.setId(getId());
-        um.setUsername(getUsername());
-        um.setUserpass(getUserpass());
-        um.setCreatedAt(getCreatedAt());
-        um.setUpdatedAt(getUpdatedAt());
-        um.setActive(getActive());
-        return um;
-    }
 }
