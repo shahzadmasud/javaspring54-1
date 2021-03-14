@@ -1,0 +1,14 @@
+spring:
+    profiles:
+        active: native
+    application:
+        name: config
+    cloud:
+        config:
+            server:
+                native: 
+                    searchLocations: file://C/shahzad/workspace/javaspring54-1/config/src/main/xml
+#                bootstrap: true
+#            uri: file://C/shahzad/workspace/javaspring54-1/config/src/main/xml
+server:
+    port: 8888
